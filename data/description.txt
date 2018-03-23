@@ -1,3 +1,7 @@
 QuarterlyGDP - quarterly GDP since 1940s
 RealQuarterlyGDP - real quarterly GDP since 1940s. Basically means it's adjusted for inflation
 QuarterlyUnemploymentSeasonallyAdjusted.csv - title, but only for ages 15-64
+SP-Yearly.csv - inflation adjusted s&p data  http://www.multpl.com/inflation-adjusted-s-p-500/table/by-year
+MonthlySPInfo.csv - SNP real time price until 1970, broken down by month
+IncomeTaxRates.csv - high income tax bracket and low income tax bracket rate 
+
