@@ -1,0 +1,3 @@
+QuarterlyGDP - quarterly GDP since 1940s
+RealQuarterlyGDP - real quarterly GDP since 1940s. Basically means it's adjusted for inflation
+QuarterlyUnemploymentSeasonallyAdjusted.csv - title, but only for ages 15-64
