@@ -27,8 +27,8 @@ try:
 except ImportError:
 	pass
 
-#   , DATE       , funds_rate        , oil_cpi            , high_tax_rate , low_tax_rate , unemployment     , real_gdp
-# 0 , 1970-01-01 , 8.573333333333332 , 16.566666666666666 , 71.75         , 14.0         , 4.16944920890508 , 4707.112
+#   , DATE       , funds_rate        , oil_cpi            , high_tax_rate , low_tax_rate , unemployment     , real_gdp , snp
+# 0 , 1970-01-01 , 8.573333333333332 , 16.566666666666666 , 71.75         , 14.0         , 4.16944920890508 , 4707.112 , 85.019997
 
 # Order is important for the csv-readers, so we use an OrderedDict here.
 defaults = collections.OrderedDict([
