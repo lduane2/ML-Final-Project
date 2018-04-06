@@ -57,6 +57,7 @@ def main(argv):
 			tf.feature_column.numeric_column(key="high-tax-rate"),
 			tf.feature_column.numeric_column(key="low-tax-rate"),
 			tf.feature_column.numeric_column(key="unemployment"),
+			tf.feature_column.numeric_column(key="snp")
 	]
 
 	# Build a DNNRegressor, with 2x20-unit hidden layers, with the feature columns
