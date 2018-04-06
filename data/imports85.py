@@ -33,46 +33,61 @@ URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/autos/imports-8
 
 # 3,?,alfa-romero,gas,std,two,convertible,rwd,front,88.60,168.80,64.10,48.80,2548,dohc,four,130,mpfi,3.47,2.68,9.00,111,5000,21,27,13495
 
+#   , DATE       , funds_rate        , oil_cpi            , high_tax_rate , low_tax_rate , unemployment     , real_gdp
+# 0 , 1970-01-01 , 8.573333333333332 , 16.566666666666666 , 71.75         , 14.0         , 4.16944920890508 , 4707.112
+
 # Order is important for the csv-readers, so we use an OrderedDict here.
 defaults = collections.OrderedDict([
-		("symboling", [0]),
-		("normalized-losses", [0.0]),
-		("make", [""]),
-		("fuel-type", [""]),
-		("aspiration", [""]),
-		("num-of-doors", [""]),
-		("body-style", [""]),
-		("drive-wheels", [""]),
-		("engine-location", [""]),
-		("wheel-base", [0.0]),
-		("length", [0.0]),
-		("width", [0.0]),
-		("height", [0.0]),
-		("curb-weight", [0.0]),
-		("engine-type", [""]),
-		("num-of-cylinders", [""]),
-		("engine-size", [0.0]),
-		("fuel-system", [""]),
-		("bore", [0.0]),
-		("stroke", [0.0]),
-		("compression-ratio", [0.0]),
-		("horsepower", [0.0]),
-		("peak-rpm", [0.0]),
-		("city-mpg", [0.0]),
-		("highway-mpg", [0.0]),
-		("price", [0.0])
+		("index", [0]),
+		("date", [""]),
+		("funds-rate", [0.0]),
+		("oil-cpi", [0.0]),
+		("high-tax-rate", [0.0]),
+		("low-tax-rate", [0.0]),
+		("unemployment", [0.0]),
+		("real-gdp", [0.0])
 ])  # pyformat: disable
+#defaults = collections.OrderedDict([
+#		("symboling", [0]),
+#		("normalized-losses", [0.0]),
+#		("make", [""]),
+#		("fuel-type", [""]),
+#		("aspiration", [""]),
+#		("num-of-doors", [""]),
+#		("body-style", [""]),
+#		("drive-wheels", [""]),
+#		("engine-location", [""]),
+#		("wheel-base", [0.0]),
+#		("length", [0.0]),
+#		("width", [0.0]),
+#		("height", [0.0]),
+#		("curb-weight", [0.0]),
+#		("engine-type", [""]),
+#		("num-of-cylinders", [""]),
+#		("engine-size", [0.0]),
+#		("fuel-system", [""]),
+#		("bore", [0.0]),
+#		("stroke", [0.0]),
+#		("compression-ratio", [0.0]),
+#		("horsepower", [0.0]),
+#		("peak-rpm", [0.0]),
+#		("city-mpg", [0.0]),
+#		("highway-mpg", [0.0]),
+#		("price", [0.0])
+#])  # pyformat: disable
 
-types = collections.OrderedDict((key, type(value[0]))
-																for key, value in defaults.items())
-
+types = collections.OrderedDict((key, type(value[0])) for key, value in defaults.items())
+print(types)
 
 def _get_imports85():
-	path = tf.contrib.keras.utils.get_file(URL.split("/")[-1], URL)
+	print("********INSIDE GET_IMPORTS85()")
+#	path = tf.contrib.keras.utils.get_file(URL.split("/")[-1], URL)
+	path = "QuarterlyResults.csv"
 	return path
 
 
-def dataset(y_name="price", train_fraction=0.7):
+def dataset(y_name="real-gdp", train_fraction=0.7):
+	print("********INSIDE DATASET()")
 	"""Load the imports85 data as a (train,test) pair of `Dataset`.
 
 	Each dataset generates (features_dict, label) pairs.
@@ -86,9 +101,11 @@ def dataset(y_name="price", train_fraction=0.7):
 	"""
 	# Download and cache the data
 	path = _get_imports85()
+	print("********FINISHED GET_IMPORTS85()")
 
 	# Define how the lines of the file should be parsed
 	def decode_line(line):
+		print("********INSIDE DECODE_LINE()")
 		"""Convert a csv line into a (features_dict,label) pair."""
 		# Decode the line to a tuple of items based on the types of
 		# csv_header.values().
@@ -150,6 +167,8 @@ def dataset(y_name="price", train_fraction=0.7):
 	# Do the same for the test-set.
 	test = (base_dataset.filter(in_test_set).cache().map(decode_line))
 
+	print(test)
+
 	return train, test
 
 
@@ -164,7 +183,7 @@ def raw_dataframe():
 	return df
 
 
-def load_data(y_name="price", train_fraction=0.7, seed=None):
+def load_data(y_name="real-gdp", train_fraction=0.7, seed=None):
 	"""Get the imports85 data set.
 
 	A description of the data is available at:

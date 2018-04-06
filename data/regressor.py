@@ -28,7 +28,9 @@ PRICE_NORM_FACTOR = 1000
 def main(argv):
 	"""Builds, trains, and evaluates the model."""
 	assert len(argv) == 1
+	print("*************IMPORTING DATASET")
 	(train, test) = imports85.dataset()
+	print("*************FINISHED IMPORTING DATASET")
 
 	# Switch the labels to units of thousands for better convergence.
 	def normalize_price(features, labels):
@@ -57,23 +59,28 @@ def main(argv):
 	# options. The vocabulary can also be specified with a vocabulary file (using
 	# `categorical_column_with_vocabulary_file`). For features covering a
 	# range of positive integers use `categorical_column_with_identity`.
-	body_style_vocab = ["hardtop", "wagon", "sedan", "hatchback", "convertible"]
-	body_style = tf.feature_column.categorical_column_with_vocabulary_list(
-			key="body-style", vocabulary_list=body_style_vocab)
-	make = tf.feature_column.categorical_column_with_hash_bucket(
-			key="make", hash_bucket_size=50)
+#	body_style_vocab = ["hardtop", "wagon", "sedan", "hatchback", "convertible"]
+#	body_style = tf.feature_column.categorical_column_with_vocabulary_list(
+#			key="body-style", vocabulary_list=body_style_vocab)
+#	make = tf.feature_column.categorical_column_with_hash_bucket(
+#			key="make", hash_bucket_size=50)
 
+
+#	funds_rate        , oil_cpi            , high_tax_rate , low_tax_rate , unemployment
 	feature_columns = [
-			tf.feature_column.numeric_column(key="curb-weight"),
-			tf.feature_column.numeric_column(key="highway-mpg"),
+			tf.feature_column.numeric_column(key="funds-rate"),
+			tf.feature_column.numeric_column(key="oil-cpi"),
+			tf.feature_column.numeric_column(key="high-tax-rate"),
+			tf.feature_column.numeric_column(key="low-tax-rate"),
+			tf.feature_column.numeric_column(key="unemployment"),
 			# Since this is a DNN model, convert categorical columns from sparse
 			# to dense.
 			# Wrap them in an `indicator_column` to create a
 			# one-hot vector from the input.
-			tf.feature_column.indicator_column(body_style),
+#			tf.feature_column.indicator_column(body_style),
 			# Or use an `embedding_column` to create a trainable vector for each
 			# index.
-			tf.feature_column.embedding_column(make, dimension=3),
+#			tf.feature_column.embedding_column(make, dimension=3),
 	]
 
 	# Build a DNNRegressor, with 2x20-unit hidden layers, with the feature columns
@@ -93,10 +100,11 @@ def main(argv):
 
 	# Convert MSE to Root Mean Square Error (RMSE).
 	print("\n" + 80 * "*")
-	print("\nRMS error for the test set: ${:.0f}"
-				.format(PRICE_NORM_FACTOR * average_loss**0.5))
+	print("\nRMS error for the test set: {:.0f}".format(average_loss**0.5))
+	print(eval_result)
 
 	print()
+	
 
 
 if __name__ == "__main__":
