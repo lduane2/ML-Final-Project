@@ -20,7 +20,7 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-import imports85  # pylint: disable=g-bad-import-order
+import cleaned_econ_data  # pylint: disable=g-bad-import-order
 
 STEPS = 5000
 PRICE_NORM_FACTOR = 1000
@@ -28,9 +28,7 @@ PRICE_NORM_FACTOR = 1000
 def main(argv):
 	"""Builds, trains, and evaluates the model."""
 	assert len(argv) == 1
-	print("*************IMPORTING DATASET")
-	(train, test) = imports85.dataset()
-	print("*************FINISHED IMPORTING DATASET")
+	(train, test) = cleaned_econ_data.dataset()
 
 	# Switch the labels to units of thousands for better convergence.
 	def normalize_price(features, labels):
@@ -53,34 +51,12 @@ def main(argv):
 		return (test.shuffle(1000).batch(128)
 						.make_one_shot_iterator().get_next())
 
-	# The first way assigns a unique weight to each category. To do this you must
-	# specify the category's vocabulary (values outside this specification will
-	# receive a weight of zero). Here we specify the vocabulary using a list of
-	# options. The vocabulary can also be specified with a vocabulary file (using
-	# `categorical_column_with_vocabulary_file`). For features covering a
-	# range of positive integers use `categorical_column_with_identity`.
-#	body_style_vocab = ["hardtop", "wagon", "sedan", "hatchback", "convertible"]
-#	body_style = tf.feature_column.categorical_column_with_vocabulary_list(
-#			key="body-style", vocabulary_list=body_style_vocab)
-#	make = tf.feature_column.categorical_column_with_hash_bucket(
-#			key="make", hash_bucket_size=50)
-
-
-#	funds_rate        , oil_cpi            , high_tax_rate , low_tax_rate , unemployment
 	feature_columns = [
 			tf.feature_column.numeric_column(key="funds-rate"),
 			tf.feature_column.numeric_column(key="oil-cpi"),
 			tf.feature_column.numeric_column(key="high-tax-rate"),
 			tf.feature_column.numeric_column(key="low-tax-rate"),
 			tf.feature_column.numeric_column(key="unemployment"),
-			# Since this is a DNN model, convert categorical columns from sparse
-			# to dense.
-			# Wrap them in an `indicator_column` to create a
-			# one-hot vector from the input.
-#			tf.feature_column.indicator_column(body_style),
-			# Or use an `embedding_column` to create a trainable vector for each
-			# index.
-#			tf.feature_column.embedding_column(make, dimension=3),
 	]
 
 	# Build a DNNRegressor, with 2x20-unit hidden layers, with the feature columns
@@ -105,8 +81,6 @@ def main(argv):
 
 	print()
 	
-
-
 if __name__ == "__main__":
 	# The Estimator periodically generates "INFO" logs; make these logs visible.
 	tf.logging.set_verbosity(tf.logging.INFO)
