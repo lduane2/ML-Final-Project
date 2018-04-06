@@ -2,7 +2,7 @@
 Repository for the collaboration on our group's Machine Learning Final Project.
 Luke Duane, Michael McRoskey, Anthony Calvo, Will Markley
 
-![](images/tensorflow.png)
+![](images/tensorflow.jpg)
 
 ----
 ## Overview
