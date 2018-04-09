@@ -1,12 +1,43 @@
 # ML-Final-Project
 Repository for the collaboration on our group's Machine Learning Final Project.
-Luke Duane, Michael McRoskey, Anthony Calvo, Will Markley
 
-![](images/tensorflow.jpg)
+![](https://www.tensorflow.org/images/tf_logo_transp.png)
+
+----
+## Authors
+* [Luke Duane](https://github.com/lduane2)
+* [Michael McRoskey](https://github.com/michaelmcroskey)
+* [Anthony Calvo](https://github.com/acalvo813)
+* [Will Markley](https://github.com/willmarkley)
+
 
 ----
 ## Overview
 Economic recessions and depressions are defined by the number of quarters U.S. GDP falls. Our project will analyze several macro-economic data sources to predict the GDP of the United States for a given quarter and subsequently predict whether a recession is likely. Our data sources include the [Bureau of Economic Analysis](https://www.bea.gov/), the [Bureau of Labor Statistics](https://www.bls.gov/), and [Congressional Budget Office](https://www.cbo.gov/). Our analysis is done in [iPython Jupyter Notebooks](https://ipython.org/notebook.html) using [Pandas](https://pandas.pydata.org/) and [TensorFlow](https://www.tensorflow.org/).
+
+----
+## Usage
+
+We recommend using in a virtual environment such as [VirtualEnv](https://virtualenv.pypa.io/en/stable/)
+
+```
+# clone repository
+git clone https://github.com/lduane2/ML-Final-Project.git
+cd ML-Final-Project
+
+# install dependencies (jupyter, tensorflow, pandas)
+pip install -r requirement.txt
+
+# run jupyter notebook
+jupyter notebook
+
+# navigate to dataCleaning.ipynb or basicModel.ipynb to view and execute code
+
+```
+
+# ARE SKLEARN and SCIPY dependencies?
+2. Install dependencies with `$ pip install jupyter tensorflow sklearn scipy`
+
 
 ----
 ## Files
@@ -30,15 +61,8 @@ Economic recessions and depressions are defined by the number of quarters U.S. G
 3. **`README.md`**
 
 ----
-## Usage
-1. We recommend running in a virtual environment like [VirtualEnv](https://virtualenv.pypa.io/en/stable/)
-2. Install dependencies with `$ pip install jupyter tensorflow sklearn scipy`
-3. Navigate to this repository in the terminal andexecute `$ jupyter notebook`. It should open a web browser.
-4. You can then open `dataCleaning.ipynb` or `basicModel.ipynb` to view and execute code.
-
-----
 ## Known Issues
 
-1. 
+-
 
 
