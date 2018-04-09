@@ -46,7 +46,7 @@ defaults = collections.OrderedDict([
 types = collections.OrderedDict((key, type(value[0])) for key, value in defaults.items())
 
 def _get_cleaned_econ_data():
-	path = "QuarterlyResults.csv"
+	path = "../data/QuarterlyResults.csv"
 	return path
 
 
