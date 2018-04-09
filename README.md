@@ -1,6 +1,7 @@
 # ML-Final-Project
 Repository for the collaboration on our group's Machine Learning Final Project.
 
+[![Build Status](https://travis-ci.org/lduane2/ML-Final-Project.svg?branch=master)](https://travis-ci.org/lduane2/ML-Final-Project)  
 ![](https://www.tensorflow.org/images/tf_logo_transp.png)
 
 ----
