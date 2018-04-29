@@ -50,7 +50,7 @@ def _get_cleaned_econ_data():
 	return path
 
 
-def dataset(y_name="real-gdp", train_fraction=0.7):
+def dataset(y_name="real-gdp", train_fraction=0.88):
 	"""Load the cleaned_econ_data data as a (train,test) pair of `Dataset`."""
 	# Download and cache the data
 	path = _get_cleaned_econ_data()
@@ -132,7 +132,7 @@ def raw_dataframe():
 	return df
 
 
-def load_data(y_name="real-gdp", train_fraction=0.7, seed=None):
+def load_data(y_name="real-gdp", train_fraction=0.88, seed=None):
 	# Load the raw data columns.
 	data = raw_dataframe()
 
@@ -143,8 +143,12 @@ def load_data(y_name="real-gdp", train_fraction=0.7, seed=None):
 	np.random.seed(seed)
 
 	# Split the data into train/test subsets.
-	x_train = data.sample(frac=train_fraction, random_state=seed)
-	x_test = data.drop(x_train.index)
+	#x_train = data.sample(frac=train_fraction, random_state=seed) #pandas dataframe
+	#x_test = data.drop(x_train.index)
+
+	#splitting the data non-randomly
+	x_train = x_train[:168]
+	x_test = x_test[168:]
 
 	# Extract the label from the features dataframe.
 	y_train = x_train.pop(y_name)
