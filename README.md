@@ -1,9 +1,6 @@
 # ML-Final-Project
 Repository for the collaboration on our group's Machine Learning Final Project.
 
-[![Build Status](https://travis-ci.org/lduane2/ML-Final-Project.svg?branch=master)](https://travis-ci.org/lduane2/ML-Final-Project)  
-![](https://www.tensorflow.org/images/tf_logo_transp.png)
-
 ----
 ## Authors
 * [Luke Duane](https://github.com/lduane2)
@@ -39,7 +36,6 @@ jupyter notebook
 ---
 ## Data Files
 1. data/
-	* **`^GSPC.csv`**: 
 	* **`basicModel.ipynb`**: notebook to run basic model for Milestone 2
 	* **`cleaned_econ_data.py`**: helper functions to import data into TensorFlow model
 	* **`dataCleaning.ipynb`**: notebook to consolidate and clean data
@@ -53,15 +49,12 @@ jupyter notebook
 	* **`QuarterlyUnemploymentSeasonallyAdjusted.csv`**: title, but only for ages 15-64. *Source: [St. Louis Fed](https://fred.stlouisfed.org/series/LRUN64TTUSQ156S)*
 	* **`RealQuarterlyGDP.csv`**: real quarterly GDP since 1940s. Basically means it's adjusted for inflation. *Source: [St. Louis Fed](https://fred.stlouisfed.org/series/GDPC1)*
 	* **`SP-Yearly.csv`**: inflation adjusted s&p data. *Source: [Multpl.com](http://www.multpl.com/inflation-adjusted-s-p-500/table/by-year)*
+	* **`^GSPC.csv`**: S and P 500 closing data
 
 ---
 ## Helpful Resources
 [tf Datasets](https://www.tensorflow.org/versions/master/get_started/datasets_quickstart)  
 [tf DNNRegressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)  
 
-----
-## Known Issues
-
--
 
 
