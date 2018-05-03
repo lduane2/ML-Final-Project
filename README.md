@@ -52,9 +52,9 @@ jupyter notebook
 	* **`^GSPC.csv`**: S and P 500 closing data
 
 ---
-## Helpful Resources
-[tf Datasets](https://www.tensorflow.org/versions/master/get_started/datasets_quickstart)  
-[tf DNNRegressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)  
+## Resources
+[Tensorflow Datasets](https://www.tensorflow.org/versions/master/get_started/datasets_quickstart)  
+[Tensorflow DNNRegressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)  
 
 
 
